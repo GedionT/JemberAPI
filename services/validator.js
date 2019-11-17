@@ -19,7 +19,7 @@ module.exports  =  {
 }
 
 
-function validateParams(schema, name) => {
+function validateParams(schema, name) {
 	
 	return (req, res, next) => {
 		const result = joi.validate({ param: req['params'][name]}, schema);
@@ -40,7 +40,7 @@ function validateParams(schema, name) => {
 
 }
 
-function validateBody(schema) => {
+function validateBody(schema) {
 
 	return (req, res, next) => {
 		const result = joi.validate(req.body, schema);
