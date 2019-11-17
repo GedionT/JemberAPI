@@ -15,6 +15,6 @@ const profileSchema = new Schema({
   timestamps : { createdAt: 'created_at', updatedAt: 'modified_at' }
 });
 
-userSchema.set('toJSON', { virtuals: true });
+profileSchema.set('toJSON', { virtuals: true });
 
-module.exports  = mongoose.model('User', userSchema);
+module.exports  = mongoose.model('Profile', profileSchema);
