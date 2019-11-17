@@ -2,7 +2,7 @@ const mongoose   =  require('mongoose');
 var Schema       = mongoose.Schema;
 
 const userSchema = new Schema({
-    username : {type: String, required: true},
+    username : {type: String, lowercase: true, required: true, match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
     phone    : {type: String, required: true},
     hash     : {type: String, required: false}
 }, {
