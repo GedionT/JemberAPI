@@ -9,7 +9,7 @@ module.exports  =  {
 		userSchema: joi.object().keys({
 			firstName: joi.string().required(),
 			lastName : joi.string().required(),
-			phone	 : joi.string().phone().required();
+			phone	 : joi.string().phone().required()
 		})
 
 		idSchema: joi.object().keys({
