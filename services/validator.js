@@ -5,12 +5,21 @@ module.exports  =  {
 	validateParams,
 	validateBody,
 	Schemas: {
+		profileSchema: joi.object().keys({
+			firstName : joi.string().required(),
+			lastName  : joi.string().required(),
+			gender    : joi.string().maxlength(1).required(),
+			email	  : joi.string().email().required(),
+			campus    : joi.string().required(),
+			course    : joi.string().required(),
+			interest  : joi.string()
+		}),
 
 		userSchema: joi.object().keys({
-			firstName: joi.string().required(),
-			lastName : joi.string().required(),
+			username : joi.string().regex(/^[a-zA-Z0-9]+$/).required(),
+			password : joi.string().required(),
 			phone	 : joi.string().phone().required()
-		})
+		}),
 
 		idSchema: joi.object().keys({
 		  params: joi.string().regex(/^[0-9a-fA-F]{24}$/).required() 

@@ -6,9 +6,9 @@ const profileSchema = new Schema({
     lastName   : {type: String, required: true},
     gender     : {type: String, maxlength: 1, required: true},
     email      : {type: String, required: true},
-    campus     : {type: mongoose.SchemaTypes.id, ref: 'Campus'},
-    department : {type: mongoose.SchemaTypes.String, ref: 'Campus'},
-    course     : {type: mongoose.SchemaTypes.String, ref: 'Campus'},
+    campus     : {type: mongoose.SchemaTypes.id, ref: 'Campus', required: true},
+    department : {type: mongoose.SchemaTypes.String, ref: 'Campus', required: true},
+    course     : {type: mongoose.SchemaTypes.String, ref: 'Campus', required: true},
     DoB        : {type: Date, required: true},
     interest   : [{type: String, required: false}],
     image      : {type: String, required: false}
