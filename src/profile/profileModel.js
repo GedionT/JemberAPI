@@ -10,7 +10,7 @@ const profileSchema = new Schema({
     department : {type: mongoose.SchemaTypes.String, ref: 'Campus'},
     course     : {type: mongoose.SchemaTypes.String, ref: 'Campus'},
     DoB        : {type: Date, required: true},
-    bio        : {type: String, required: false},
+    interest   : [{type: String, required: false}],
     image      : {type: String, required: false}
 }, {
   timestamps : { createdAt: 'created_at', updatedAt: 'modified_at' }
