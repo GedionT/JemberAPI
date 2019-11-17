@@ -13,14 +13,15 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1"
   },
-  "description": "chora api for the chora platform",
+  "description": "chora api for the chora educational platform",
   "main": "app.js",
   "keywords": [
     "chora",
     "education",
-    "norbook",
+    "norbooc",
     "assignments",
-    "projects"
+    "projects",
+    "distance school"
   ],
   "author": "Gedion Teshome",
   "license": "MIT"
