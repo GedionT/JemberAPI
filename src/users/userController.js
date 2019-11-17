@@ -7,10 +7,7 @@ const validator  =   require('../../services/validator');
 module.exports = {
     login,
     signup,
-    logout,
     getById,
-    update,
-    _delete,
     getAll
 }
 
@@ -45,8 +42,19 @@ async function signup(req, res) {
 
     if(password) hash = bcrypt.hashSync(password, 10);
 
-    var user = await userDal.create({username, phone, hash});
-    profileDal.create({ user: user._id });
+    var user    = await userDal.create({username, phone, hash});
+    var profile = await profileDal.create({ user: user._id });
 
-    res.json({message: 'registration successful'});
+    await userDal.update(user, {profile});
+
+    res.status(201).json({message: 'registration successful', user});
 }
+
+async function getById(req, res) {
+    return await userDal.findOne({id: req.params.id});
+}
+
+async function getAll(req, res) {
+    return userDal.findAll();
+}
+
