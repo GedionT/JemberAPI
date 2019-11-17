@@ -1,0 +1,14 @@
+const mongoose   =  require('mongoose');
+var Schema       = mongoose.Schema;
+
+const userSchema = new Schema({
+    username : {type: String, required: true},
+    phone    : {type: String, required: true},
+    hash     : {type: String, required: false}
+}, {
+  timestamps : {createdAt: 'created_at', updatedAt: 'modified_at' }
+});
+
+userSchema.set('toJSON', { virtuals: true });
+
+module.exports  = mongoose.model('User', userSchema);
