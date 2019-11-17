@@ -1,13 +1,8 @@
 var router        = require('express').Router();
 
-var userRouter    = require('../src/users/userRoutes');
-var profileRouter = require('../src/profile/profileRoutes');
-var campusRouter  = require('../src/campus/campusRoutes');
-var fileRouter    = require('../src/files/fileRoutes');
-
-router.use('/users', userRouter);
-router.use('/profile', profileRouter);
-router.use('/campus', campusRouter);
-router.use('/files', fileRouter);
+router.use('/users', require('../src/users/userRoutes'));
+router.use('/profile', require('../src/profile/profileRoutes'));
+router.use('/campus', require('../src/campus/campusRoutes'));
+router.use('/files', require('../src/files/fileRoutes'));
 
 module.exports = router;
