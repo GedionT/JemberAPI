@@ -1,5 +1,5 @@
 {
-  "name": "chora",
+  "name": "jember",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,10 +13,10 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1"
   },
-  "description": "chora api for the chora educational platform",
+  "description": "jember api for the jember educational platform",
   "main": "app.js",
   "keywords": [
-    "chora",
+    "jember",
     "education",
     "norbooc",
     "assignments",

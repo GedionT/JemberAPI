@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes setup
-app.use('/chora', require('./routes'));
+app.use('/jember', require('./routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
