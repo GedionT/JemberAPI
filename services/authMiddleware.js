@@ -1,5 +1,5 @@
 let jwt         = require('jsonwebtoken');
-const config    = require('../lib/config.json');
+const config    = require('../config/config.json');
 
 
 async function auth (req, res, next) {

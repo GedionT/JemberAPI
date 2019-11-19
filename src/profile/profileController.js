@@ -15,7 +15,7 @@ async function update (req, res) {
 
 }
 
-changeImg = (req, res, next) => {
+async function changeImg(req, res) {
 
 }
 
@@ -23,7 +23,7 @@ async function getById (req, res) {
 
 }
 
-inquire = (req, res, next) => {
+async function inquire (req, res) {
 
 }
 

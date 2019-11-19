@@ -8,7 +8,7 @@ module.exports  =  {
 		profileSchema: joi.object().keys({
 			firstName : joi.string().required(),
 			lastName  : joi.string().required(),
-			gender    : joi.string().maxlength(1).required(),
+			gender    : joi.string().required(),
 			email	  : joi.string().email().required(),
 			campus    : joi.string().required(),
 			course    : joi.string().required(),
@@ -18,7 +18,7 @@ module.exports  =  {
 		userSchema: joi.object().keys({
 			username : joi.string().regex(/^[a-zA-Z0-9]+$/).required(),
 			password : joi.string().required(),
-			phone	 : joi.string().phone().required()
+			phone	 : joi.string().required()
 		}),
 
 		idSchema: joi.object().keys({
