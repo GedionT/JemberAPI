@@ -1,4 +1,4 @@
-const User  =   require('./userModel');
+const User  =   require('../../config/db').User;
 
 module.exports = {
     create,
