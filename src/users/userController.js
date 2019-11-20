@@ -2,6 +2,7 @@ const config     =   require('../../config/config.json');
 const jwt        =   require('jsonwebtoken');
 const bcrypt     =   require('bcrypt');
 const userDal    =   require('./userDal');
+// const profileDal =   require('../profile/profileDal');
 const validator  =   require('../../services/validator');
 
 module.exports = {
@@ -43,9 +44,9 @@ async function signup(req, res) {
     if(password) hash = bcrypt.hashSync(password, 10);
 
     var user    = await userDal.create({username, phone, hash});
-    var profile = await profileDal.create({ user: user._id });
+    // var profile = await profileDal.create({ user: user._id });
 
-    await userDal.update(user, {profile});
+    // await userDal.update(user, {profile});
 
     res.status(201).json({message: 'registration successful', user});
 }
