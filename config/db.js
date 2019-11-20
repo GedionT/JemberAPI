@@ -12,7 +12,7 @@ db.once('open', () => console.log("Connected to the Database!"));
 
 module.exports = {
     User    : require('../src/users/userModel'), 
-    // Profile : require('../src/profile/profileModel'),
-    // Campus  : require('../src/campus/campusModel'),
+    Profile : require('../src/profile/profileModel'),
+    Campus  : require('../src/campus/campusModel'),
     // File    : require('../src/files/fileModel')
 };
