@@ -23,10 +23,10 @@ async function login(req, res) {
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
-        return {
+        res.status(201).json({
             ...userWithoutHash,
             token
-        };
+        });
     }
 }
 
@@ -52,10 +52,15 @@ async function signup(req, res) {
 }
 
 async function getById(req, res) {
-    return await userDal.findOne({id: req.params.id});
+    var id = req.params.id;
+    let user = await userDal.findOne({_id: id});
+    user.hash = "";
+    res.status(201).json(user);
+    
 }
 
 async function getAll(req, res) {
-    return userDal.findAll();
+    var users = await userDal.findAll();
+    res.status(200).json(users);
 }
 
