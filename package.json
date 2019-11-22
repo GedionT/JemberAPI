@@ -25,7 +25,7 @@
     "multer-s3": "^2.9.0"
   },
   "description": "jember api for the jember educational platform",
-  "main": "node ./bin/www",
+  "main": "./bin/www",
   "keywords": [
     "jember",
     "education",
