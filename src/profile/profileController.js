@@ -8,11 +8,16 @@ module.exports = {
     changeImg,
     getById,
     inquire,
+    download,
     getAll
 }
 
 async function update (req, res) {
 
+}
+
+async function download (req, res) {
+    
 }
 
 async function changeImg(req, res) {
