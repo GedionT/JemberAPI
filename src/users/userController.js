@@ -21,15 +21,14 @@ async function login(req, res, next) {
     user = await userDal.findOne({username})
         .then(user => {
     // authentication code
-    if (user && bcrypt.compareSync(password, user.hash)) {
-        const { hash, ...userWithoutHash } = user.toObject();
-        const token = jwt.sign({ sub: user.id }, config.secret);
-        res.status(201).json({
-            ...userWithoutHash,
-            token
-        });
-    } else throw 'username or password incorrect';
-    
+            if (user && bcrypt.compareSync(password, user.hash)) {
+                 const { hash, ...userWithoutHash } = user.toObject();
+                 const token = jwt.sign({ sub: user.id }, config.secret);
+                    res.status(201).json({
+                         ...userWithoutHash,
+                         token
+                         });
+             } else throw 'username or password incorrect';
     }).catch(err => next(err));
 }
 
