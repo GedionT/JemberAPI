@@ -13,6 +13,7 @@ const profileSchema = new Schema({
     schoolId   : {type: String, required: true},
     DoB        : {type: Date, required: true},
     interest   : [{type: String, required: false}],
+    voucher    : {type: mongoose.SchemaTypes.ObjectId, ref: 'Voucher', required: false},
     image      : {type: String, required: false}
 }, {
   timestamps : { createdAt: 'created_at', updatedAt: 'modified_at' }
