@@ -13,12 +13,12 @@ module.exports = {
 }
 
 async function login(req, res, next) {
-    let username, password, user;
+    let username, password;
 
     username = req.body.username;
     password = req.body.password;
 
-    user = await userDal.findOne({username})
+    await userDal.findOne({username})
         .then(user => {
             if (user && bcrypt.compareSync(password, user.hash)) {
                  const { hash, ...userWithoutHash } = user.toObject();
@@ -32,14 +32,14 @@ async function login(req, res, next) {
     }).catch(err => next(err));
 }
 
-async function signup(req, res) {
+async function signup(req, res, next) {
     let username, phone, password;
     var hash;
     
     username = req.body.username;
     phone    = req.body.phone;
     password = req.body.password;
-
+    
     if(await userDal.findOne( { username } ) ) throw 'Username is already taken';
     if(await userDal.findOne( { phone } ) ) throw 'Phone is registered to another account';
 
@@ -55,10 +55,10 @@ async function signup(req, res) {
 
 async function getById(req, res, next) {
     var id = req.params.id;
-    let user = await userDal.findOne({_id: id})
+    await userDal.findOne({_id: id})
         .then(user => {
             if(user){
-            user.hash = "";
+            user.hash = "####";
             res.status(200).json(user);
             } else 
                 throw "user not found";
@@ -66,8 +66,9 @@ async function getById(req, res, next) {
         .catch(err => next(err)); 
 }
 
-async function getAll(req, res) {
-    var users = await userDal.findAll();
-    res.status(200).json(users);
+async function getAll(req, res, next) {
+    await userDal.findAll()
+        .then( users => res.status(200).json(users))
+        .catch(err => next(err));
 }
 
