@@ -53,12 +53,17 @@ async function signup(req, res) {
     res.status(201).json({message: 'registration successful', user});
 }
 
-async function getById(req, res) {
+async function getById(req, res, next) {
     var id = req.params.id;
-    let user = await userDal.findOne({_id: id});
-    user.hash = "";
-    res.status(201).json(user);
-    
+    let user = await userDal.findOne({_id: id})
+        .then(user => {
+            if(user){
+            user.hash = "";
+            res.status(200).json(user);
+            } else 
+                throw "user not found";
+        })
+        .catch(err => next(err)); 
 }
 
 async function getAll(req, res) {
