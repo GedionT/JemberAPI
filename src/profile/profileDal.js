@@ -17,7 +17,7 @@ async function update(profile, data) {
 }
 
 async function findOne(query) {
-    return await Profile.findOne(query).populate('profile').exec();
+    return await Profile.findOne(query).populate('user').exec();
 }
 
 async function findAll(query) {
