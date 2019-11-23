@@ -25,9 +25,9 @@ async function login(req, res, next) {
                  const { hash, ...userWithoutHash } = user.toObject();
                  const token = jwt.sign({ sub: user.id }, config.secret);
                     res.status(201).json({
-                         ...userWithoutHash,
-                         token
-                         });
+                    ...userWithoutHash,
+                    token
+                    });
              } else throw 'username or password incorrect';
     }).catch(err => next(err));
 }
