@@ -12,13 +12,14 @@ module.exports = {
     getAll
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
     let username, password, user;
 
     username = req.body.username;
     password = req.body.password;
 
-    user = await userDal.findOne({username});
+    user = await userDal.findOne({username})
+        .then(user => {
     // authentication code
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
@@ -27,7 +28,9 @@ async function login(req, res) {
             ...userWithoutHash,
             token
         });
-    }
+    } else throw 'username or password incorrect';
+    
+    }).catch(err => next(err));
 }
 
 async function signup(req, res) {
