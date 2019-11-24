@@ -32,7 +32,7 @@ async function login(req, res, next) {
     }).catch(err => next(err));
 }
 
-async function signup(req, res, next) {
+async function signup(req, res) {
     let username, phone, password;
     var hash;
     
@@ -52,6 +52,7 @@ async function signup(req, res, next) {
         // res.status(201).json({ message: 'registration successful', user});
 // }.catch(err => next(err));
 
+    user.hash = "####";
     res.status(201).json({message: 'registration successful', user});
 }
 
