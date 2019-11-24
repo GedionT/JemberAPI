@@ -46,9 +46,11 @@ async function signup(req, res, next) {
     if(password) hash = bcrypt.hashSync(password, 10);
 
     var user    = await userDal.create({username, phone, hash});
-    // var profile = await profileDal.create({ user: user._id });
-
-    // await userDal.update(user, {profile});
+    // .then( user => { 
+        // var profile = await profileDal.create({ user: user._id });
+        // await userDal.update(user, {profile});
+        // res.status(201).json({ message: 'registration successful', user});
+// }.catch(err => next(err));
 
     res.status(201).json({message: 'registration successful', user});
 }
