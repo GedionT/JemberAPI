@@ -68,7 +68,11 @@ async function getById(req, res, next) {
 
 async function getAll(req, res, next) {
     await userDal.findAll()
-        .then( users => res.status(200).json(users))
+        .then( users => {
+            users.forEach(user => {
+                user.hash = "####";                
+            });
+            res.status(200).json(users)})
         .catch(err => next(err));
 }
 
