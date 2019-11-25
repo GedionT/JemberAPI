@@ -32,14 +32,14 @@ async function login(req, res, next) {
     }).catch(err => next(err));
 }
 
-async function signup(req, res) {
+async function signup(req, res, next) {
     let username, phone, password;
     var hash;
     
     username = req.body.username;
     phone    = req.body.phone;
     password = req.body.password;
-    
+        
     if(await userDal.findOne( { username } ) ) throw 'Username is already taken';
     if(await userDal.findOne( { phone } ) ) throw 'Phone is registered to another account';
 
