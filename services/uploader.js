@@ -12,4 +12,14 @@ cloudinary.config({
     api_secret: 'MxgjYxIm74MpjwVCeLByE8k6vFk'
 });
 
+function imgUpload() {
 
+}
+
+function fileUpload() {
+
+}
+
+function videoUpload() {
+    
+}
