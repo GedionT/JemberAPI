@@ -10,6 +10,6 @@ const userSchema = new Schema({
   timestamps : {createdAt: 'created_at', updatedAt: 'modified_at' }
 });
 
-userSchema.set('toJSON', { virtuals: true });
+userSchema.set('toJSON', { virtuals: false });
 
 module.exports  = mongoose.model('User', userSchema);
