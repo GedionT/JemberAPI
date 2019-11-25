@@ -1,4 +1,4 @@
-const Profile  =   require('./profileModel');
+const Profile  =   require('../../config/db').Profile;
 
 module.exports = {
     create,
