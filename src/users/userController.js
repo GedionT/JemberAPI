@@ -33,24 +33,30 @@ async function login(req, res, next) {
 }
 
 async function signup(req, res, next) {
-    let username, phone, password;
-    var hash;
+    let username, phone, password, hash;
     
     username = req.body.username;
     phone    = req.body.phone;
     password = req.body.password;
-        
-    if(await userDal.findOne( { username } ) ) throw 'Username is already taken';
-    if(await userDal.findOne( { phone } ) ) throw 'Phone is registered to another account';
 
-    if(password) hash = bcrypt.hashSync(password, 10);
-
-    var user    = await userDal.create({username, phone, hash});
-    var profile = await profileDal.create({ user: user._id });
-    await userDal.update(user, {profile})
-        .then( user => {
+    await userDal.findOne({username})
+        .then(found => {
+            if(found) throw 'username is already taken';
+            else return userDal.findOne({phone});
+        })
+        .then(found => {
+            if (found) throw 'phone number is registered to a different account';
+            else return hash = bcrypt.hashSync(password, 10);
+        })
+        .then(hash => userDal.create({ username, phone, hash}) )
+        .then(saved => {
+            user = saved;
+            return profileDal.create({user: user._id});
+        })
+        .then(profile => userDal.update(user, {profile}))
+        .then(user => {
             user.hash = "####";
-            res.status(201).json({ message: 'registration successful', user})
+            res.status(201).json({ message: 'registration successful', user});
         })
         .catch(err => next(err));
 }
