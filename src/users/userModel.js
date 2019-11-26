@@ -1,5 +1,5 @@
 const mongoose   =  require('mongoose');
-var Schema       = mongoose.Schema;
+var Schema       =  mongoose.Schema;
 
 const userSchema = new Schema({
     username : {type: String, lowercase: true, required: true, match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
