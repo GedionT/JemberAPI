@@ -12,6 +12,7 @@ module.exports = {
     getAll
 }
 
+// login an existing user by providing username and password
 async function login(req, res, next) {
     let username, password;
 
@@ -32,6 +33,7 @@ async function login(req, res, next) {
     }).catch(err => next(err));
 }
 
+// create a new user and empty profile on the fly using phone number, username, and password
 async function signup(req, res, next) {
     let username, phone, password, hash;
     
@@ -61,6 +63,7 @@ async function signup(req, res, next) {
         .catch(err => next(err));
 }
 
+// gets a registered user by userId
 async function getById(req, res, next) {
     var id = req.params.id;
     await userDal.findOne({_id: id})
@@ -74,6 +77,7 @@ async function getById(req, res, next) {
         .catch(err => next(err)); 
 }
 
+// gets all registered users information
 async function getAll(req, res, next) {
     await userDal.findAll()
         .then( users => {
