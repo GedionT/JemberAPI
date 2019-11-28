@@ -60,6 +60,8 @@ async function inquire (req, res) {
 
 }
 
-async function getAll (req, res) {
-    
+async function getAll (req, res, next) {
+    await profileDal.findAll()
+        .then( profiles => res.status(200).json(profiles))
+        .catch(err => next(err));
 }
