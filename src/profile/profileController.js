@@ -16,25 +16,20 @@ module.exports = {
 async function update (req, res, next) {
     let id = req.params.id;
     let body = req.body;
-    let bool = false;
-    var updated;
-// this part needs check * and work**
-    let usernameCheck = await userDal.findOne({'username': body.username})
+ 
+   await userDal.findOne({'username': body.username})
         .then( checkUser => {
-                 if(!checkUser) bool = true;
+                 if(checkUser != null) throw 'username is already taken';
+                 else 
+                    return userDal.findOne({id});
         })
-         await userDal.findOne({id})
         .then(user => {
-            if(!user) throw 'User not found';
-            if(user.username !== body.username && bool){
-                throw 'User name is already taken';
-            }
-            
-           updated = profileDal.update(user, body);
-        }).catch(err => next(err));
-
-        // var updated = await profileDal.update(user, body);
-        res.status(200).json({ message: 'Profile updated', updated});
+            if(user == null) throw 'User not found';
+            else
+                return profileDal.update(user, body);
+        })
+        .then(profile => res.status(200).json({message: 'Profile updated', profile}))
+        .catch(err => next(err));
 }
 
 async function download (req, res) {
