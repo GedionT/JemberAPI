@@ -17,18 +17,16 @@ async function update (req, res, next) {
     let id = req.params.id;
     let body = req.body;
  
-   await userDal.findOne({'username': body.username})
-        .then( checkUser => {
-                 if(checkUser != null) throw 'username is already taken';
+   await profileDal.findOne({id})
+        .then( profile => {
+                 if(profile == null) throw 'profile not found';
                  else 
-                    return userDal.findOne({id});
+                    return profileDal.update(profile, body);
         })
-        .then(user => {
-            if(user == null) throw 'User not found';
-            else
-                return profileDal.update(user, body);
+        .then(profile => {
+            profile['user'].hash = "####";
+            res.status(200).json({message: 'Profile updated', profile})
         })
-        .then(profile => res.status(200).json({message: 'Profile updated', profile}))
         .catch(err => next(err));
 }
 
