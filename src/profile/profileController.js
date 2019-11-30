@@ -8,7 +8,6 @@ module.exports = {
     changeImg,
     getById,
     inquire,
-    download,
     getAll
 }
 
@@ -27,10 +26,6 @@ async function update (req, res, next) {
             res.status(200).json({message: 'Profile updated', profile})
         })
         .catch(err => next(err));
-}
-
-async function download (req, res) {
-    
 }
 
 async function changeImg(req, res) {
