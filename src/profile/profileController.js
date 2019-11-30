@@ -1,6 +1,5 @@
 const config      = require('../../config/config.json');
 const profileDal  = require('./profileDal');
-const userDal     = require('../users/userDal');
 const validator   = require('../../services/validator');
 const upload      = require('../../services/uploader');
 
