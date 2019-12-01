@@ -7,6 +7,7 @@ module.exports = {
     update,
     changeImg,
     getById,
+    addVoucher,
     getAll
 }
 
@@ -28,6 +29,10 @@ async function update (req, res, next) {
 }
 
 async function changeImg(req, res) {
+
+}
+
+async function addVoucher(req, res, next) {
 
 }
 
