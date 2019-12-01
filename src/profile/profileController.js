@@ -16,7 +16,7 @@ async function update (req, res, next) {
     let body = req.body;
  
    await profileDal.findOne({id})
-        .then( profile => {
+        .then(profile => {
                  if(profile == null) throw 'profile not found';
                  else 
                     return profileDal.update(profile, body);
