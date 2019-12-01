@@ -43,3 +43,15 @@ async function enrolledCourses (req, res, next) {
         .catch(err => next(err));
 
 }
+
+async function addCampus (req, res, next) {
+
+}
+
+async function getCampus (req, res, next) {
+
+}
+
+async function getAllCampuses (req, res, next) {
+    
+}
