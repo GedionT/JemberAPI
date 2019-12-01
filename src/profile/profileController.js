@@ -7,7 +7,6 @@ module.exports = {
     update,
     changeImg,
     getById,
-    inquire,
     getAll
 }
 
@@ -41,10 +40,6 @@ async function getById (req, res, next) {
                 res.status(201).json(profile);
             } else throw 'profile not found';
         }).catch( err => next(err));
-}
-
-async function inquire (req, res) {
-
 }
 
 async function getAll (req, res, next) {
