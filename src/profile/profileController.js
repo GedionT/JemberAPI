@@ -1,7 +1,7 @@
 const config      = require('../../config/config.json');
 const profileDal  = require('./profileDal');
 const validator   = require('../../services/validator');
-const upload      = require('../../services/uploader');
+const uploader    = require('../../services/uploader');
 
 module.exports = {
     update,
