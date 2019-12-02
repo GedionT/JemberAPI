@@ -37,8 +37,11 @@ async function enrolledCourses (req, res, next) {
                         }
                 })
             }
-            // needs work on sending enrolled courses on next line below
-            res.status(200).json({courses});
+
+            if(check){
+                var courses = department.courses;
+                res.status(200).json({courses});
+            }
         })
         .catch(err => next(err));
 
