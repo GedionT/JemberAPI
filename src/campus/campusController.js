@@ -1,4 +1,3 @@
-const config      = require('../../config/config.json');
 const campusDal   = require('./campusDal');
 const profileDal  = require('../profile/profileDal');
 const validator   = require('../../services/validator');

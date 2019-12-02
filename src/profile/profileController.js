@@ -1,4 +1,3 @@
-const config      = require('../../config/config.json');
 const profileDal  = require('./profileDal');
 const validator   = require('../../services/validator');
 const uploader    = require('../../services/uploader');
