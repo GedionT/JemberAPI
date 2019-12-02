@@ -33,7 +33,8 @@ async function changeImg(req, res) {
 }
 
 async function addVoucher(req, res, next) {
-
+       var voucher = req.body.voucher;
+    // validate voucher and give access to materials for a limited time
 }
 
 async function getById (req, res, next) {
