@@ -45,7 +45,8 @@ async function getById (req, res, next) {
                 profile['user'].hash = "####";
                 res.status(201).json(profile);
             } else throw 'profile not found';
-        }).catch( err => next(err));
+        })
+        .catch( err => next(err));
 }
 
 async function getAll (req, res, next) {
