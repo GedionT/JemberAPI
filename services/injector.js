@@ -1,12 +1,13 @@
 var Zip           = require('pizzip');
 var Docxtemplater = require('docxtemplater');
+var fs            = require('fs');
+var path          = require('path');
 
-var fs     = require('fs');
-var path   = require('path');
+
+exports.personalizeFile = ({data}) => {
 
 // load the docx file as a binary
 var content = fs.readFileSync(path.resolve(__dirname, 'input.docx'), 'binary');
-
 var zip = new Zip(content);
 
 var doc = new Docxtemplater();
@@ -14,14 +15,15 @@ doc.loadZip(zip);
 
 // set the templateVariables
 doc.setData({
-    firstName: 'John',
-    lastName: 'Doe',
-    id: 'AiiT32/11',
-    course: 'Management Cycles'
+    firstName: data.firstName,
+    lastName: data.lastName,
+    Id: data.SchoolId,
+    course: data.course
 });
 
 try {
     // render the document after replacing holders with the data that is set
+    // should be removed later on after test (entire or some of the try catch)
     doc.render();
 } catch {
     var err = {
@@ -40,3 +42,5 @@ var buf = doc.getZip()
 
 // buf is a nodejs buffer, you can either write it to a file or do anything else with it
 fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+
+}
