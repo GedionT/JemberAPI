@@ -15,9 +15,9 @@ doc.loadZip(zip);
 // set the templateVariables
 doc.setData({
     firstName: data.firstName,
-    lastName: data.lastName,
-    Id: data.SchoolId,
-    course: data.course
+    lastName : data.lastName,
+    SchoolIdb: data.SchoolId,
+    course   : data.course
 });
 
 try {
