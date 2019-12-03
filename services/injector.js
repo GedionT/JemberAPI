@@ -6,7 +6,7 @@ var fs            = require('fs');
 exports.personalizeFile = ({data}) => {
 
 // load the docx file as a binary
-var content = fs.readFileSync('../public/file/input.docx', 'binary');
+var content = fs.readFileSync('../public/files/input.docx', 'binary');
 var zip = new Zip(content);
 
 var doc = new Docxtemplater();
@@ -40,6 +40,6 @@ var buf = doc.getZip()
 
 // buf is a nodejs buffer, you can either write it to a file or do anything else with it
 // find a way to send the now made output file as a downloadable and then distract it from the server
-    fs.writeFileSync('../public/file/output.docx', buf);
+    fs.writeFileSync('../public/files/output.docx', buf);
 
 }
