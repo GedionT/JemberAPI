@@ -27,8 +27,9 @@ async function update (req, res, next) {
         .catch(err => next(err));
 }
 
-async function changeImg(req, res) {
-
+async function changeImg(req, res, next) {
+    // needs work
+    uploader.imgUpload.single(req.form);
 }
 
 async function addVoucher(req, res, next) {
