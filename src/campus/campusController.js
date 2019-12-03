@@ -12,7 +12,7 @@ module.exports = {
 
 async function enrolledCourses (req, res, next) {
     let id = req.params.id;
-    let campus, department, check = false;
+    let campus, department;
 
         profileDal.findOne({ id })
         .then(profile => {
@@ -29,17 +29,13 @@ async function enrolledCourses (req, res, next) {
                 throw 'campus not found';
             else {
                 campus.departments.forEach( departments => {
-                    if(departments == department) check = true;
-                    else{ 
-                        check = false 
+                    if(departments == department) { 
+                        var courses = department.courses;
+                        res.status(200).json({courses});
+                    }
+                    else 
                         throw 'department not found'
-                        }
                 })
-            }
-
-            if(check){
-                var courses = department.courses;
-                res.status(200).json({courses});
             }
         })
         .catch(err => next(err));
