@@ -2,7 +2,7 @@ var router        = require('express').Router();
 
 // get homepage to redirect for download
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('home');
 });
 
 router.use('/users', require('../src/users/userRoutes'));
