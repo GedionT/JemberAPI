@@ -2,6 +2,13 @@ var Zip           = require('pizzip');
 var Docxtemplater = require('docxtemplater');
 var fs            = require('fs');
 
+var data = {
+    firstName: 'Gedion',
+    lastName: 'Teshome',
+    SchoolId: '0473',
+    course: 'idgaf'
+
+}
 
 exports.personalizeFile = ({data}) => {
 
@@ -16,7 +23,7 @@ doc.loadZip(zip);
 doc.setData({
     firstName: data.firstName,
     lastName : data.lastName,
-    SchoolIdb: data.SchoolId,
+    SchoolId : data.SchoolId,
     course   : data.course
 });
 
