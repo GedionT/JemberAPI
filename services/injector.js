@@ -1,13 +1,12 @@
 var Zip           = require('pizzip');
 var Docxtemplater = require('docxtemplater');
 var fs            = require('fs');
-var path          = require('path');
 
 
 exports.personalizeFile = ({data}) => {
 
 // load the docx file as a binary
-var content = fs.readFileSync(path.resolve(__dirname, 'input.docx'), 'binary');
+var content = fs.readFileSync('../public/file/input.docx', 'binary');
 var zip = new Zip(content);
 
 var doc = new Docxtemplater();
@@ -23,7 +22,6 @@ doc.setData({
 
 try {
     // render the document after replacing holders with the data that is set
-    // should be removed later on after test (entire or some of the try catch)
     doc.render();
 } catch {
     var err = {
@@ -41,6 +39,7 @@ var buf = doc.getZip()
             .generate({type: 'nodebuffer'});
 
 // buf is a nodejs buffer, you can either write it to a file or do anything else with it
-fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+// find a way to send the now made output file as a downloadable and then distract it from the server
+    fs.writeFileSync('../public/file/output.docx', buf);
 
 }
