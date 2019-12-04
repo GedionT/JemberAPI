@@ -43,7 +43,19 @@ async function enrolledCourses (req, res, next) {
 }
 
 async function addCampus (req, res, next) {
+       let campus      = req.body.campus;
+       let location    = req.body.location;
+       let departments = req.body.departments;
+       let courses     = req.body.courses;
 
+       await campusDal.findOne({Name: campus})
+                      .then(found => {
+                          if(found) throw 'campus by that name exists in the records';
+                          else 
+                            return campusDal.create({campus, location, departments, courses});
+                      })
+                      .then(saved => res.status(200).json({message:'Information saved', saved}))
+                      .catch(err=>next(err));
 }
 
 async function getCampus (req, res, next) {
