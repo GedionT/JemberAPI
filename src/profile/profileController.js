@@ -22,7 +22,7 @@ async function update (req, res, next) {
         })
         .then(profile => {
             profile['user'].hash = "####";
-            res.status(200).json({message: 'Profile updated', profile})
+            res.status(200).json({message: 'Profile updated', profile});
         })
         .catch(err => next(err));
 }

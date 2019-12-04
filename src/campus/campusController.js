@@ -15,14 +15,14 @@ async function enrolledCourses (req, res, next) {
     let campus, department;
 
         profileDal.findOne({ id })
-        .then(profile => {
-            if (!profile)
-                throw 'profile not found';
-            else {
-                campus = profile.campus;
-                department = profile.department;
-                return campusDal.findOne({ Name: campus });
-            }
+                .then(profile => {
+                        if (!profile)
+                             throw 'profile not found';
+                         else {
+                             campus = profile.campus;
+                             department = profile.department;
+                             return campusDal.findOne({ Name: campus });
+                            }
         })
         .then(campus => {
             if (!campus)
@@ -39,7 +39,6 @@ async function enrolledCourses (req, res, next) {
             }
         })
         .catch(err => next(err));
-
 }
 
 async function addCampus (req, res, next) {
