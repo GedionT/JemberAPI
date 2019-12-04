@@ -35,7 +35,7 @@ async function login(req, res, next) {
 
 // create a new user and empty profile on the fly using phone number, username, and password
 async function signup(req, res, next) {
-    let username, phone, password, hash;
+    let username, phone, password;
     
     username = req.body.username;
     phone    = req.body.phone;
