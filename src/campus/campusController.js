@@ -72,5 +72,7 @@ async function getCampusByName (req, res, next) {
 }
 
 async function getAllCampuses (req, res, next) {
-    
+    await campusDal.findAll()
+                   .then( campuses => res.status(200).json(campuses))
+                   .catch(err=> next(err));
 }
