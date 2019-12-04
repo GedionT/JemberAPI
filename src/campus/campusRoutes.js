@@ -5,7 +5,7 @@ const auth             = require('../../services/authMiddleware');
 
 router.get('/enrolledIn/:id', auth, campusController.enrolledCourses);
 router.post('/addCampus', auth, campusController.addCampus);
-router.get('/getCampus', auth, campusController.getCampus);
+router.get('/getCampusByName', auth, campusController.getCampus);
 router.get('/getAll', auth, campusController.getAllCampuses);
 
 module.exports = router;
