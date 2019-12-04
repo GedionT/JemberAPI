@@ -6,7 +6,7 @@ const uploader    = require('../../services/uploader');
 module.exports = {
    enrolledCourses,
    addCampus, 
-   getCampus,
+   getCampusByName,
    getAllCampuses
 }
 
@@ -43,10 +43,10 @@ async function enrolledCourses (req, res, next) {
 }
 
 async function addCampus (req, res, next) {
-       let campus      = req.body.campus;
-       let location    = req.body.location;
-       let departments = req.body.departments;
-       let courses     = req.body.courses;
+       var campus      = req.body.campus;
+       var location    = req.body.location;
+       var departments = req.body.departments;
+       var courses     = req.body.courses;
 
        await campusDal.findOne({Name: campus})
                       .then(found => {
@@ -58,8 +58,17 @@ async function addCampus (req, res, next) {
                       .catch(err=>next(err));
 }
 
-async function getCampus (req, res, next) {
-
+async function getCampusByName (req, res, next) {
+      var campusName = req.body.campusName;
+        
+      await campusDal.findOne({Name: campusName})
+                     .then(found => {
+                         if(found)
+                            res.status(200).json(found);
+                        else 
+                            throw "campus not found";
+                     })
+                     .catch(err => next(err));
 }
 
 async function getAllCampuses (req, res, next) {
