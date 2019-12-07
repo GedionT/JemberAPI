@@ -42,6 +42,7 @@ var buf = doc.getZip()
 
 // buf is a nodejs buffer, you can either write it to a file or do anything else with it
 // find a way to send the now made output file as a downloadable and then distract it from the server
-    fs.writeFileSync('../public/files/output.docx', buf);
+    var output = fs.writeFileSync('../public/files/output.docx', buf);
+    return output;
 
 }
