@@ -7,12 +7,12 @@ const fileSchema = new Schema({
     spellCheck :  {type: Boolean, default: false},
     proofRead  :  {type: Boolean, default: false}, 
     Campus     :  {type: Schema.Types.ObjectId, ref: 'Campus', required: true},
-    Department :  {type: Schema.Types.ObjectId, ref: 'Campus', required: true},
-    Course     :  {type: Schema.Types.ObjectId, ref: 'Campus', required: true}
+    Department :  {type: String, required: true},
+    Course     :  {type: String, ref: 'Campus', required: true}
 }, {
     timestamps : { createdAt: 'created_at', updatedAt: 'modified_at' }
 });
 
 fileSchema.set('toJSON', { virtuals : true });
 
-module.exports = mongoose.Schema('File', fileSchema);
+module.exports = mongoose.model('File', fileSchema);
