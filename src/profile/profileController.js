@@ -2,6 +2,8 @@ const profileDal  = require('./profileDal');
 const validator   = require('../../services/validator');
 const uploader    = require('../../services/uploader');
 
+const singleUpload = uploader.single('image');
+
 module.exports = {
     update,
     changeImg,
@@ -28,8 +30,19 @@ async function update (req, res, next) {
 }
 
 async function changeImg(req, res, next) {
-    // needs work
-    uploader.imgUpload.single(req.form);
+    var id = req.params.id;
+    await profileDal.findOne({_id: id})
+        .then(profile => {
+            singleUpload(req, res, function(err) {
+                if(err) throw 'Image upload err';
+            
+                var image = req.file.location;
+
+                return profileDal.update(profile, image);
+            });
+        })
+        .then(profile => res.status(200).json({message: 'successful upload', profile}))
+        .catch(err => next(err));
 }
 
 async function addVoucher(req, res, next) {
