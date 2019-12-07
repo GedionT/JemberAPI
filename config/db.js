@@ -14,5 +14,5 @@ module.exports = {
     User    : require('../src/users/userModel'), 
     Profile : require('../src/profile/profileModel'),
     Campus  : require('../src/campus/campusModel'),
-    // File    : require('../src/files/fileModel')
+    File    : require('../src/files/fileModel')
 };
