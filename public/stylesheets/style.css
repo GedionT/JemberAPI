@@ -1,55 +1,94 @@
 body {
-  background-image: url('back.png');
-  background-repeat: no-repeat;
-  background-size: 65%;
-  background-position: center;
+  background-image    :  url('../images/back.png');
+  background-repeat   :  no-repeat;
+  background-size     :  75%;
+  background-position :  center;
 } 
 
-h1, h2, h4 {
- margin: 0 0 .5em 0;
- line-height: 1.2;
- letter-spacing: -.02em;
- color: #4CAF50;
+h1, h2 {
+ text-align     :  center;
+ margin         : 0 0 .5em 0;
+ line-height    : 1.2;
+ letter-spacing : -.02em;
+ color          : #070807;
+}
+
+h4 {
+ text-align     : center;
+ margin         : 0 0 .5em 0;
+ line-height    : 1.2;
+ letter-spacing : -.02em;
+ color          : #f9fff9;
 }
 
 hr {
  margin : 4px;
- width  : 26%;
+ width  : 85%;
+}
+
+div.container {
+ text-align : center;
 }
 
 div.window {
- background-color: #98a583b5;
+ background-color: #030401b5;
  margin : 4px;
  width  : 25%;
  padding: 2px 4px;
- border : 1px solid #4CAF50;
+ border : 1px solid #acb1ac;
+ display: inline-block;
 }
 
 label {
- margin :0 0 .6em 0;
+ margin      :0 0 .6em 0;
  line-height : 1.5;
- font-size: 16;
-
+ font-size   : 16;
+ color       : #e0e2e0; 
 }
 
 input[type=text] {
- vertical-align: 4px;
- width: 60%;
+ vertical-align : 4px;
+ width : 60%;
  padding: 8px 8px;
  position: relative;
  margin: 6px 2px;
  border: none;
- border-bottom: 2px solid #4CAF50;
+ border-bottom: 2px solid #070807;
 
 }
 
 input[type=number] {
  vertical-align: 4px;
- width: 20%;
- padding: 8px 8px;
- position: relative;
- margin: 6px 2px;
- border: none;
- border-bottom: 2px solid #4CAF50;
+ width         : 20%;
+ padding       : 8px 8px;
+ position      : relative;
+ margin        : 6px 2px;
+ border        : none;
+ border-bottom : 2px solid #070807;
+}
 
+input[type=submit] {
+ background-color: #46d446;
+ width   : 45%;
+ border  : none;
+ color   : white;
+ padding : 16px 32px;
+ text-decoration: none;
+ margin : 4px 2px;
+ cursor : pointer;
+}
+
+input[type=submit] {
+ background-color: #276d03;
+}
+
+div.center {         
+ display: flex;
+   justify-content: center;
+}
+
+textarea {
+ margin: 4px;
+ padding: 10px, 20px;
+ display: block;
 }
