@@ -1,11 +1,5 @@
-var cloud   = require('cloudinary').v2;
-
-module.exports = {
-    imgUpload,
-    fileUpload,
-    videoUpload,
-}
-
+var cloud       = require('cloudinary').v2;
+const multer    = require('multer');
 cloud.config({
     cloud_name: process.env.CLOUD_NAME || 'jember',
     api_key: process.env.CLOUD_API_KEY || '244988797972126',
@@ -22,9 +16,9 @@ const fileFilter = (req, file, cb) => {
 
 const imgUpload = multer({
     fileFilter, 
-    storage: multerS3({
+    storage: multer({
         acl: 'public-read',
-        s3,
+        cloud,
         bucket: 'bucket-name',
         metadata: function(req, file, cb){
             cb(null, {fieldName: 'testing metadata'});
@@ -42,4 +36,10 @@ function fileUpload() {
 
 function videoUpload() {
     
+}
+
+module.exports = {
+    imgUpload,
+    fileUpload,
+    videoUpload,
 }
