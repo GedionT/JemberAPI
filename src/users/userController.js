@@ -23,7 +23,7 @@ async function login(req, res, next) {
         .then(user => {
             if (user && bcrypt.compareSync(password, user.hash)) {
                  const { hash, ...userWithoutHash } = user.toObject();
-                 const token = jwt.sign({ sub: user.id }, config.secret);
+                 const token = jwt.sign({ sub: user.id }, process.env.JWTSECRET || config.secret);
                     res.status(201).json({
                      ...userWithoutHash,
                      token
