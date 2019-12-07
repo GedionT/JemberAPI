@@ -2,13 +2,6 @@ var Zip           = require('pizzip');
 var Docxtemplater = require('docxtemplater');
 var fs            = require('fs');
 
-var data = {
-    firstName: 'Gedion',
-    lastName: 'Teshome',
-    SchoolId: '0473',
-    course: 'idgaf'
-
-}
 
 exports.personalizeFile = ({data}) => {
 
@@ -21,10 +14,12 @@ doc.loadZip(zip);
 
 // set the templateVariables
 doc.setData({
-    firstName: data.firstName,
-    lastName : data.lastName,
-    SchoolId : data.SchoolId,
-    course   : data.course
+    firstName : data.firstName,
+    lastName  : data.lastName,
+    campus    : data.campus,
+    SchoolId  : data.SchoolId,
+    course    : data.course,
+    date      : Date.now()
 });
 
 try {
