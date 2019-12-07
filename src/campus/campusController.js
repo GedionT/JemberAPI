@@ -1,7 +1,6 @@
 const campusDal   = require('./campusDal');
 const profileDal  = require('../profile/profileDal');
 const validator   = require('../../services/validator');
-const uploader    = require('../../services/uploader');
 
 module.exports = {
    enrolledCourses,
