@@ -31,7 +31,7 @@ async function changeImg(req, res, next) {
     var id = req.params.id;
     await profileDal.findOne({_id: id})
         .then(profile => {
-            uploader(req, res, function(err) {
+            uploader.imgUpload(req, res, function(err) {
                 if(err) throw 'Image upload err';
             
                 var image = req.file.location;
@@ -39,7 +39,7 @@ async function changeImg(req, res, next) {
                 return profileDal.update(profile, image);
             });
         })
-        .then(profile => res.status(200).json({message: 'successful upload', profile}))
+        .then(profile => res.status(200).json({message: 'successful upload', image: profile.image}))
         .catch(err => next(err));
 }
 
