@@ -44,8 +44,23 @@ async function changeImg(req, res, next) {
 }
 
 async function addVoucher(req, res, next) {
-       var voucher = req.body.voucher;
+    var id      = req.params.id;
+    var voucher = req.body.voucher;
+    var voucherID, issuer, amount;
     // validate voucher and give access to materials for a limited time
+    await profileDal.findOne({_id:id})
+        .then(profile => {
+            if(!profile) throw 'profile not found, try again';
+            else {
+                voucherID = voucher.split('')[0];
+                issuer    = voucher.split('')[1];
+                amount    = voucher.split('')[2];    
+            }
+        })
+        .then(profile => {
+             
+        })
+        .catch(err => next(err));    
 }
 
 async function getById (req, res, next) {

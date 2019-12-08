@@ -9,7 +9,6 @@ const profileSchema = new Schema({
     email      : {type: String, required: false},
     campus     : {type: mongoose.SchemaTypes.ObjectId, ref: 'Campus', required: false},
     department : {type: mongoose.SchemaTypes.ObjectId, ref: 'Campus', required: false},
-    courses    : [{type: mongoose.SchemaTypes.ObjectId, ref: 'Campus', required: false}],
     schoolId   : {type: String, required: false},
     DoB        : {type: Date, required: false},
     interest   : [{type: String, required: false}],
