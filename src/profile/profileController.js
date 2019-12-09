@@ -29,15 +29,14 @@ async function update (req, res, next) {
 
 async function changeImg(req, res, next) {
     var id = req.params.id;
+    const image = {};
+    image.url = req.file.url;
+    image.id  = req.file.public_id;
     await profileDal.findOne({_id: id})
         .then(profile => {
-            uploader.imgUpload(req, res, function(err) {
-                if(err) throw 'Image upload err';
-            
-                var image = req.file.location;
-
-                return profileDal.update(profile, image);
-            });
+               if(err) throw 'profile not found';
+               else
+                  return profileDal.update(profile, image);
         })
         .then(profile => res.status(200).json({message: 'successful upload', image: profile.image}))
         .catch(err => next(err));
