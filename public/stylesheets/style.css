@@ -1,7 +1,7 @@
 body {
   background-image    :  url('../images/back.png');
   background-repeat   :  no-repeat;
-  background-size     :  75%;
+  background-size     :  50%;
   background-position :  center;
 } 
 
@@ -26,12 +26,8 @@ hr {
  width  : 85%;
 }
 
-div.container {
- text-align : center;
-}
-
 div.window {
- background-color: #030401b5;
+ background-color: #9ad329b5;
  margin : 4px;
  width  : 25%;
  padding: 2px 4px;
