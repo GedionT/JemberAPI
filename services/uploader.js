@@ -16,4 +16,6 @@ const storage = cloudinaryStorage({
     transformation: [{width: 500, height: 500, crop: "limit"}]
 });
 
-const parser = multer({storage});
+const parser = multer({storage: storage});
+exports.parser;
+

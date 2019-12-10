@@ -1,5 +1,6 @@
 const router             =   require('express').Router();
 const profileController  =   require('./profileController');
+const parser           =   require('../../services/uploader').parser;
 const auth               =   require('../../services/authMiddleware');
 
 
