@@ -5,6 +5,7 @@ const auth               =   require('../../services/authMiddleware');
 
 router.put('/update', auth, profileController.update);
 router.post('/changeImg', auth, profileController.changeImg);
+router.get('/current', auth, profileController.getCurrent);
 router.get('/:id', auth, profileController.getById);
 router.put('/addVoucher', auth, profileController.addVoucher);
 router.get('/', auth, profileController.getAll);

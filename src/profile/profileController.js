@@ -6,6 +6,7 @@ module.exports = {
     update,
     changeImg,
     getById,
+    getCurrent,
     addVoucher,
     getAll
 }
@@ -69,6 +70,18 @@ async function getById (req, res, next) {
             if(profile) {
                 profile['user'].hash = "####";
                 res.status(201).json(profile);
+            } else throw 'profile not found';
+        })
+        .catch( err => next(err));
+}
+
+async function getCurrent (req, res, next) {
+    var id = req.user.sub;
+    await profileDal.findOne({_id: id})
+        .then(profile => {
+            if(profile) {
+                profile['user'].hash = "####";
+                res.stauts(201).json(profile);
             } else throw 'profile not found';
         })
         .catch( err => next(err));
