@@ -24,13 +24,14 @@
     "multer-storage-cloudinary": "^2.2.1",
     "pizzip": "^3.0.6"
   },
-  "description": "jember api for the jember educational platform",
+  "description": "jember api for the jember educational web and mobile application",
   "main": "./bin/www",
   "keywords": [
     "jember",
     "education",
     "norbooc",
     "assignments",
+    "keep track",
     "projects",
     "distance school"
   ],
